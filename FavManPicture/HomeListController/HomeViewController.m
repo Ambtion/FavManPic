@@ -180,7 +180,7 @@
 
 - (void)homeGropCellheadViewDidCick:(HomeGropCell *)cell
 {
-
+    
 }
 
 -(void)tripSegmentController:(TripSegmentController *)segmentedControl selectedIndex:(NSInteger)index

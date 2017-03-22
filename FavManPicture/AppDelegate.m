@@ -44,7 +44,7 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xffffff)];
-    NSDictionary *textAttributes1 = @{NSFontAttributeName: [UIFont systemFontOfSize:15.f],
+    NSDictionary *textAttributes1 = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:15.f],
                                       NSForegroundColorAttributeName: [UIColor blackColor]
                                       };
     
