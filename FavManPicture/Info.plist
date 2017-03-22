@@ -30,5 +30,10 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>这里将使用您相册中图片</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

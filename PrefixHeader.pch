@@ -1,0 +1,29 @@
+//
+//  PrefixHeader.pch
+//  JewelryApp
+//
+//  Created by kequ on 15/5/1.
+//  Copyright (c) 2015年 jewelry. All rights reserved.
+//
+
+#ifndef JewelryApp_PrefixHeader_pch
+#define JewelryApp_PrefixHeader_pch
+
+#import "UIView+Sizes.h"
+#import "MBProgressHUD.h"
+#import "Masonry.h"
+#import "NetWorkEntity.h"
+#import "UIViewController+Method.h"
+#import "HereDataModel.h"
+#import "UIImageView+WebCache.h"
+#import "FMConfigManager.h"
+
+#define RGB_Color(r,g,b)    RGBA_Color(r,g,b,1)
+#define RGBA_Color(r,g,b,a) ([UIColor colorWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a])
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#define UIColorFromRGBA(rgbValue, alphaValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
+#define UIColorFromRGB(rgbValue) UIColorFromRGBA(rgbValue, 1.0f)
+
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+#endif
