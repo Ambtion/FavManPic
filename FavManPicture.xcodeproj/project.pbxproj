@@ -44,6 +44,8 @@
 		E1653B411E826344002479B9 /* HomeGropCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B401E826344002479B9 /* HomeGropCell.m */; };
 		E1653B441E8267C2002479B9 /* DataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B431E8267C2002479B9 /* DataConvert.m */; };
 		E1653B5C1E827666002479B9 /* TripSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B5B1E827666002479B9 /* TripSegmentController.m */; };
+		E1653B621E8285EC002479B9 /* BMAssetsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B5F1E8285EC002479B9 /* BMAssetsListController.m */; };
+		E1653B631E8285EC002479B9 /* BMAssetsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B611E8285EC002479B9 /* BMAssetsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +128,10 @@
 		E1653B431E8267C2002479B9 /* DataConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataConvert.m; sourceTree = "<group>"; };
 		E1653B5A1E827666002479B9 /* TripSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripSegmentController.h; sourceTree = "<group>"; };
 		E1653B5B1E827666002479B9 /* TripSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripSegmentController.m; sourceTree = "<group>"; };
+		E1653B5E1E8285EC002479B9 /* BMAssetsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAssetsListController.h; sourceTree = "<group>"; };
+		E1653B5F1E8285EC002479B9 /* BMAssetsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAssetsListController.m; sourceTree = "<group>"; };
+		E1653B601E8285EC002479B9 /* BMAssetsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAssetsCell.h; sourceTree = "<group>"; };
+		E1653B611E8285EC002479B9 /* BMAssetsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAssetsCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +191,7 @@
 		E10F94931E8221BF0098435F /* FavManPicture */ = {
 			isa = PBXGroup;
 			children = (
+				E1653B5D1E8285E3002479B9 /* PhotoGridListController */,
 				E10F95891E8232D90098435F /* DataModel */,
 				E10F957C1E8230830098435F /* CommonUI */,
 				E10F95781E822DA00098435F /* NetWorkEntity */,
@@ -379,6 +386,17 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		E1653B5D1E8285E3002479B9 /* PhotoGridListController */ = {
+			isa = PBXGroup;
+			children = (
+				E1653B5E1E8285EC002479B9 /* BMAssetsListController.h */,
+				E1653B5F1E8285EC002479B9 /* BMAssetsListController.m */,
+				E1653B601E8285EC002479B9 /* BMAssetsCell.h */,
+				E1653B611E8285EC002479B9 /* BMAssetsCell.m */,
+			);
+			path = PhotoGridListController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -504,6 +522,7 @@
 				E10F956A1E822A6D0098435F /* BMJWNagationController.m in Sources */,
 				E10F954F1E8226610098435F /* NSArray+adapter.m in Sources */,
 				E10F95511E8226610098435F /* NSMutableArray+adapter.m in Sources */,
+				E1653B631E8285EC002479B9 /* BMAssetsCell.m in Sources */,
 				E10F95571E8226610098435F /* UIViewAdditions.m in Sources */,
 				E10F95731E822BD70098435F /* RefreshCollectionView.m in Sources */,
 				E10F954E1E8226610098435F /* LJSwizzleMethod.m in Sources */,
@@ -513,6 +532,7 @@
 				E10F95881E8230830098435F /* UIViewController+Method.m in Sources */,
 				E10F95501E8226610098435F /* NSDictionary+adapter.m in Sources */,
 				E10F957B1E822DA00098435F /* NetWorkEntity.m in Sources */,
+				E1653B621E8285EC002479B9 /* BMAssetsListController.m in Sources */,
 				E10F95531E8226610098435F /* YiRefreshHeader.m in Sources */,
 				E1653B441E8267C2002479B9 /* DataConvert.m in Sources */,
 				E10F95741E822BD70098435F /* RefreshTableView.m in Sources */,
