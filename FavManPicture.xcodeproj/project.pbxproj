@@ -43,6 +43,7 @@
 		E1653B2C1E825627002479B9 /* FMConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B2B1E825627002479B9 /* FMConfigManager.m */; };
 		E1653B411E826344002479B9 /* HomeGropCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B401E826344002479B9 /* HomeGropCell.m */; };
 		E1653B441E8267C2002479B9 /* DataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B431E8267C2002479B9 /* DataConvert.m */; };
+		E1653B5C1E827666002479B9 /* TripSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B5B1E827666002479B9 /* TripSegmentController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,8 @@
 		E1653B401E826344002479B9 /* HomeGropCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGropCell.m; sourceTree = "<group>"; };
 		E1653B421E8267C2002479B9 /* DataConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConvert.h; sourceTree = "<group>"; };
 		E1653B431E8267C2002479B9 /* DataConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataConvert.m; sourceTree = "<group>"; };
+		E1653B5A1E827666002479B9 /* TripSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripSegmentController.h; sourceTree = "<group>"; };
+		E1653B5B1E827666002479B9 /* TripSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripSegmentController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +334,8 @@
 		E10F956B1E822AD90098435F /* HomeListController */ = {
 			isa = PBXGroup;
 			children = (
+				E1653B5A1E827666002479B9 /* TripSegmentController.h */,
+				E1653B5B1E827666002479B9 /* TripSegmentController.m */,
 				E10F956C1E822AE20098435F /* HomeViewController.h */,
 				E10F956D1E822AE20098435F /* HomeViewController.m */,
 				E1653B3F1E826344002479B9 /* HomeGropCell.h */,
@@ -524,6 +529,7 @@
 				E1653B411E826344002479B9 /* HomeGropCell.m in Sources */,
 				E10F95591E8226610098435F /* HRWebCatShare.m in Sources */,
 				E10F95521E8226610098435F /* YiRefreshFooter.m in Sources */,
+				E1653B5C1E827666002479B9 /* TripSegmentController.m in Sources */,
 				E10F95861E8230830098435F /* PortraitView.m in Sources */,
 				E10F95541E8226610098435F /* RFSegmentView.m in Sources */,
 				E10F95621E8227A90098435F /* UIImage+Scale.m in Sources */,

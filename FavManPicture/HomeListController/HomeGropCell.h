@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class HomeGropCell;
+
+@protocol HomeGropCellDelegate <NSObject>
+
+- (void)homeGropCellheadViewDidCick:(HomeGropCell *)cell;
+
+@end
+
 @interface HomeGropCell : UITableViewCell
 
 @property(nonatomic,strong)FMGroupModel * groupModel;
+
+@property(nonatomic,weak)id<HomeGropCellDelegate>delegate;
 
 + (CGFloat)heightForCell;
 

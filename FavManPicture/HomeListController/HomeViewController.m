@@ -9,13 +9,17 @@
 #import "HomeViewController.h"
 #import "RefreshTableView.h"
 #import "HomeGropCell.h"
+#import "TripSegmentController.h"
 
-@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,TripSegmentControllerDelegate,HomeGropCellDelegate>
 
 @property(nonatomic,strong)RefreshTableView * tableView;
+@property(nonatomic,strong)TripSegmentController * segView;
+
 
 @property(nonatomic,strong)NSMutableArray* dataSource;
 @property(nonatomic,assign)NSInteger page;
+
 @end
 
 @implementation HomeViewController
@@ -29,10 +33,19 @@
     [self quaryDataWithRefresh:YES];
 }
 
+
+
 - (void)initUI
 {
     UIView * view = [UIView new];
     [self.view addSubview:view];
+    
+    self.segView = [[TripSegmentController alloc] initWithFrame:CGRectMake(0, (self.view.width - 200)/2.f, 200, 30)
+                                                                           data:@[@"最新",@"最热"]
+                                                                          Inset:UIEdgeInsetsMake(0, 25, 0, 25.f) spacing:50.f];
+    self.segView.seletedIndex = 0;
+    self.segView.delegate = self;
+     self.navigationItem.titleView = self.segView;
     
     self.tableView = [[RefreshTableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -80,7 +93,7 @@
         page = self.page + 1;
     }
     
-    [NetWorkEntity quaryPhotoListWithPage:page photoPype:0 authorId:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [NetWorkEntity quaryPhotoListWithPage:page photoPype:self.segView.seletedIndex authorId:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [MBProgressHUD hideHUDForView:ws.view animated:YES];
         [ws.tableView.refreshHeader endRefreshing];
@@ -149,6 +162,7 @@
     HomeGropCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HomeGropCell"];
     if (!cell) {
         cell = [[HomeGropCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeGropCell"];
+        cell.delegate = self;
     }
     cell.groupModel = self.dataSource[indexPath.row];
     return cell;
@@ -159,6 +173,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (void)homeGropCellheadViewDidCick:(HomeGropCell *)cell
+{
+
+}
+
+-(void)tripSegmentController:(TripSegmentController *)segmentedControl selectedIndex:(NSInteger)index
+{
+    [self quaryDataWithRefresh:YES];
 }
 
 @end

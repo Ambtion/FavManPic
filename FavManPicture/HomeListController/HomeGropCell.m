@@ -54,6 +54,9 @@
     self.headView = [[UIView alloc] init];
     self.headView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.headView];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headViewDidClick:)];
+    [self.headView addGestureRecognizer:tap];
+    
     
     self.authorView = [[PortraitView alloc] init];
     self.authorView.layer.cornerRadius = 22.f;
@@ -153,6 +156,17 @@
     
     
 }
+
+#pragma mark - Action
+- (void)headViewDidClick:(UIButton *)button
+{
+    if([_delegate respondsToSelector:@selector(homeGropCellheadViewDidCick:)]){
+        [_delegate homeGropCellheadViewDidCick:self];
+    }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{}
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{}
 
 
 
