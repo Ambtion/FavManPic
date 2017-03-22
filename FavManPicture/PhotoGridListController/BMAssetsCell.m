@@ -7,12 +7,9 @@
 //
 
 #import "BMAssetsCell.h"
-#import <AssetsLibrary/AssetsLibrary.h>
 
 
 @interface BMAssetsCell()
-@property(nonatomic,strong)UIImageView * posteImage;
-@property(nonatomic,strong)UIImageView * vedioTag;
 
 @end
 
@@ -29,28 +26,29 @@
 
 - (void)initUI
 {
-    self.posteImage = [[UIImageView alloc] init];
+    self.posteImage = [[PortraitView alloc] init];
     [self addSubview:self.posteImage];
     [self.posteImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsZero);
     }];
     
-    self.vedioTag = [[UIImageView alloc] init];
-    self.vedioTag.image = [UIImage imageNamed:@"vedio_tag"];
-    [self.posteImage addSubview:self.vedioTag];
-    
-    [self.vedioTag mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.posteImage).offset(5);
-        make.bottom.equalTo(self.posteImage).offset(-5);
-    }];
+//    self.vedioTag = [[UIImageView alloc] init];
+//    self.vedioTag.image = [UIImage imageNamed:@"vedio_tag"];
+//    [self.posteImage addSubview:self.vedioTag];
+//    
+//    [self.vedioTag mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.posteImage).offset(5);
+//        make.bottom.equalTo(self.posteImage).offset(-5);
+//    }];
 }
 
-- (void)setAsset:(ALAsset *)asset
-{
-    _asset = asset;
-    self.posteImage.image = [UIImage imageWithCGImage:[asset aspectRatioThumbnail]];
-    
-    NSString * type = [asset valueForProperty:ALAssetPropertyType];
-    [self.vedioTag setHidden:![type isEqualToString:ALAssetTypeVideo]];
-}
+//- (void)setAsset:(ALAsset *)asset
+//{
+//    _asset = asset;
+//    self.posteImage.image = [UIImage imageWithCGImage:[asset aspectRatioThumbnail]];
+//    
+//    NSString * type = [asset valueForProperty:ALAssetPropertyType];
+//    [self.vedioTag setHidden:![type isEqualToString:ALAssetTypeVideo]];
+//}
+
 @end

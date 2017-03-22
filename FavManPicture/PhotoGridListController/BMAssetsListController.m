@@ -12,22 +12,17 @@
 @interface BMAssetsListController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong)UICollectionView * collectionView;
-@property(nonatomic,strong)FMGroupModel * groupMOdel;
+@property(nonatomic,strong)FMGroupModel * groupModel;
 @property(nonatomic,strong)NSArray * dataSource;
 
 @end
 
 @implementation BMAssetsListController
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (instancetype)initWithGropAsset:(FMGroupModel *)groupMOdel
+- (instancetype)initWithGropAsset:(FMGroupModel *)groupModel
 {
     self = [super init];
     if (self) {
-        self.groupMOdel = groupMOdel;
+        self.groupModel = groupModel;
     }
     return self;
 }
@@ -37,7 +32,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self initUI];
     [self loadDataSource];
-    [self addNotificaiton];
 }
 
 - (void)initUI
@@ -56,29 +50,28 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.title = self.groupModel.title;
 }
-
 
 - (void)loadDataSource
 {
-//    __weak typeof (self) ws = self;
-//    [[BMPhotoAssetsManager shareInstance] readPhotoAssetsfromGroup:self.groupAsset withType:brower.browerType sucess:^(NSArray *contains) {
-//        ws.dataSource = contains;
-//        [ws.collectionView reloadData];
-//    }];
-}
+    NSString * contentUrl = [NSString stringWithFormat:@"%@%@/%@",[FMConfigManager sharedInstance].configModel.picture_url_header,self.groupModel.source.catalog,self.groupModel.issue];
+    NSMutableArray * dataMstr = [NSMutableArray arrayWithCapacity:0];
+    
+    for (NSInteger i = 0; i < self.groupModel.pictureCount; i++) {
+        NSString * url = [NSString stringWithFormat:@"%@/%ld.jpg",contentUrl,(long)i];
+        [dataMstr addObject:url];
+    }
 
-#pragma mark - Notificaiton
-- (void)addNotificaiton
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadDataSource) name:UIApplicationDidBecomeActiveNotification  object:nil];
+    self.dataSource = dataMstr;
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Delegate
 #pragma mark layout
 static float itemSpacing = 3;
 static float itemOffset = 3.5;
-static NSInteger lineCount = 4;
+static NSInteger lineCount = 3;
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(itemOffset, itemOffset, itemOffset, itemOffset);
@@ -108,9 +101,8 @@ static NSInteger lineCount = 4;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BMAssetsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BMAssetsCell" forIndexPath:indexPath];
-    ALAsset * asset = self.dataSource[indexPath.row];
-    cell.asset = asset;
-    
+    NSString * url = self.dataSource[indexPath.row];
+    [[cell.posteImage imageView] sd_setImageWithURL:[NSURL URLWithString:url]];
     return cell;
 }
 

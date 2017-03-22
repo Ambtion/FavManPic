@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PortraitView.h"
 
-@class ALAsset;
+
 @interface BMAssetsCell : UICollectionViewCell
 
-@property(nonatomic,strong)ALAsset *  asset;
+@property(nonatomic,strong)PortraitView * posteImage;
 
 @end

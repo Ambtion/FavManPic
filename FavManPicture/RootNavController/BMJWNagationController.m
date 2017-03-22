@@ -111,8 +111,8 @@
     
     backButton.frame = backframe;
 
-    [backButton setImage:[UIImage imageNamed:@"icon_back_page"] forState:UIControlStateNormal];
-    [backButton setImage:[UIImage imageNamed:@"icon_back_page"] forState:UIControlStateHighlighted];
+    [backButton setImage:[UIImage imageNamed:@"baseNavigationBar_back_black_line_arrow"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"baseNavigationBar_back_black_line_arrow"] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];
     
     //定制自己的风格的  UIBarButtonItem

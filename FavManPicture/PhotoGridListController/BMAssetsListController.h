@@ -11,6 +11,6 @@
 
 @interface BMAssetsListController : UIViewController
 
-- (instancetype)initWithGropAsset:(FMGroupModel *)groupMOdel;
+- (instancetype)initWithGropAsset:(FMGroupModel *)groupModel;
 
 @end

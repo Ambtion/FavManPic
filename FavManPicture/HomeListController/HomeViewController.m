@@ -10,6 +10,8 @@
 #import "RefreshTableView.h"
 #import "HomeGropCell.h"
 #import "TripSegmentController.h"
+#import "BMAssetsListController.h"
+
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,TripSegmentControllerDelegate,HomeGropCellDelegate>
 
@@ -172,7 +174,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    BMAssetsListController * aLC = [[BMAssetsListController alloc] initWithGropAsset:self.dataSource[indexPath.row]];
+    [self.navigationController pushViewController:aLC animated:YES];
 }
 
 - (void)homeGropCellheadViewDidCick:(HomeGropCell *)cell
