@@ -28,8 +28,6 @@
     return _sharedInstance;
 }
 
-
-
 - (void)quaryConfig
 {
     WS(ws);

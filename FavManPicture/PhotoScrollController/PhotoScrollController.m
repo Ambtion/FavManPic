@@ -8,6 +8,7 @@
 
 #import "PhotoScrollController.h"
 #import "PhotoImageScaleCell.h"
+#import <AVFoundation/AVFoundation.h>
 
 const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 
@@ -23,6 +24,8 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 @property(nonatomic,strong)UIButton * downloadButton;
 
 @property(nonatomic,strong)NSTimer * rotateTimer;
+@property(nonatomic,strong)AVPlayer * player;
+
 @end
 
 @implementation PhotoScrollController
@@ -54,6 +57,8 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.playButton setSelected:NO];
+    [self stopPlay];
 }
 
 - (void)initUI
@@ -148,15 +153,23 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 }
 
 #pragma mark -- 滚动视图的代理方法
-
-- (void)play
+- (void)startPlay
 {
+    [self stopPlay];
     self.rotateTimer = [NSTimer scheduledTimerWithTimeInterval:2.f target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
+    NSString * mp3Url = [NSString stringWithFormat:@"%@%ld.mp3",[[FMConfigManager sharedInstance] configModel].sound_url_header,(rand() % [[FMConfigManager sharedInstance] configModel].audio_count) + 1];
+    NSURL * url = [NSURL URLWithString:mp3Url];
     
+    self.player = [AVPlayer playerWithURL:url];
+    
+    [self.player play];
+
 }
 
-- (void)stop
+- (void)stopPlay
 {
+    [self.player pause];
+    self.player = nil;
     [self.rotateTimer invalidate];
     self.rotateTimer = nil;
 }
@@ -164,7 +177,7 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 - (void)nextPage
 {
     if (!self.dataSource.count) {
-        [self stop];
+        [self stopPlay];
         return;
     }
     
@@ -258,9 +271,9 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 - (void)playButtonDidCilck:(UIButton *)button
 {
     if (button.isSelected) {
-        [self stop];
+        [self stopPlay];
     }else{
-        [self play];
+        [self startPlay];
     }
     
     button.selected = !button.isSelected;
