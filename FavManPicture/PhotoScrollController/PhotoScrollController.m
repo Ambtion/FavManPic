@@ -131,24 +131,22 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
     [self.downloadButton addTarget:self action:@selector(downPicture) forControlEvents:UIControlEventTouchUpInside];
     [self.cusNavBar addSubview:self.downloadButton];
     
+    [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    [self.playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateSelected];
+    [self.downloadButton setImage:[UIImage imageNamed:@"download"]  forState:UIControlStateNormal];
+    
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backButton);
         make.right.equalTo(self.cusNavBar).offset(-12);
-        make.size.equalTo(backButton);
+        make.size.mas_offset(CGSizeMake(30, 30));
     }];
     
     [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(backButton);
-        make.centerY.equalTo(backButton);
-        make.right.equalTo(self.playButton.mas_left).offset(-20);
+        make.size.equalTo(self.playButton);
+        make.centerY.equalTo(self.playButton);
+        make.right.equalTo(self.playButton.mas_left).offset(-10);
     }];
-    
-    self.playButton.backgroundColor = [UIColor redColor];
-    [self.playButton setTitle:@"播放" forState:UIControlStateNormal];
-    [self.playButton setTitle:@"停止" forState:UIControlStateSelected];
-    
-    self.downloadButton.backgroundColor = [UIColor greenColor];
-    [self.downloadButton setTitle:@"保存" forState:UIControlStateSelected];
+
 
 }
 
