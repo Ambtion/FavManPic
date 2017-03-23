@@ -455,7 +455,7 @@
 					E10F94901E8221BF0098435F = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = SSDB62V4N2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -692,7 +692,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lin.FavManPicture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "904a69b3-171d-4e17-a243-23e2e9d9c524";
+				PROVISIONING_PROFILE_SPECIFIER = dev_any;
 			};
 			name = Debug;
 		};
@@ -702,8 +703,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SSDB62V4N2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Steven HE (SSDB62V4N2)";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				INFOPLIST_FILE = FavManPicture/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -714,7 +715,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lin.FavManPicture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = adhot_any;
 			};
 			name = Release;
 		};
