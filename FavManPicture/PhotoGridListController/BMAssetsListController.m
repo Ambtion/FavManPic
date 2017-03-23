@@ -8,6 +8,7 @@
 
 #import "BMAssetsListController.h"
 #import "BMAssetsCell.h"
+#import "PhotoScrollController.h"
 
 @interface BMAssetsListController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -107,14 +108,10 @@ static NSInteger lineCount = 3;
 }
 
 #pragma mark Action
-- (void)onCancelDidClick:(id)sender
-{
-    
-}
-
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    PhotoScrollController * phS = [[PhotoScrollController alloc] initWithGropAsset:self.dataSource];
+    [self.navigationController pushViewController:phS animated:YES];
 }
 
 @end

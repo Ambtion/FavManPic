@@ -46,6 +46,9 @@
 		E1653B5C1E827666002479B9 /* TripSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B5B1E827666002479B9 /* TripSegmentController.m */; };
 		E1653B621E8285EC002479B9 /* BMAssetsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B5F1E8285EC002479B9 /* BMAssetsListController.m */; };
 		E1653B631E8285EC002479B9 /* BMAssetsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B611E8285EC002479B9 /* BMAssetsCell.m */; };
+		E1653B671E83793C002479B9 /* PhotoScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B661E83793C002479B9 /* PhotoScrollController.m */; };
+		E1653B6A1E8379A1002479B9 /* BMImageScaleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B691E8379A1002479B9 /* BMImageScaleView.m */; };
+		E1653B6D1E837A08002479B9 /* PhotoImageScaleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B6C1E837A08002479B9 /* PhotoImageScaleCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +135,12 @@
 		E1653B5F1E8285EC002479B9 /* BMAssetsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAssetsListController.m; sourceTree = "<group>"; };
 		E1653B601E8285EC002479B9 /* BMAssetsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAssetsCell.h; sourceTree = "<group>"; };
 		E1653B611E8285EC002479B9 /* BMAssetsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAssetsCell.m; sourceTree = "<group>"; };
+		E1653B651E83793C002479B9 /* PhotoScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoScrollController.h; sourceTree = "<group>"; };
+		E1653B661E83793C002479B9 /* PhotoScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoScrollController.m; sourceTree = "<group>"; };
+		E1653B681E8379A1002479B9 /* BMImageScaleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMImageScaleView.h; sourceTree = "<group>"; };
+		E1653B691E8379A1002479B9 /* BMImageScaleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMImageScaleView.m; sourceTree = "<group>"; };
+		E1653B6B1E837A08002479B9 /* PhotoImageScaleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoImageScaleCell.h; sourceTree = "<group>"; };
+		E1653B6C1E837A08002479B9 /* PhotoImageScaleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoImageScaleCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +200,7 @@
 		E10F94931E8221BF0098435F /* FavManPicture */ = {
 			isa = PBXGroup;
 			children = (
+				E1653B641E83792D002479B9 /* PhotoScrollController */,
 				E1653B5D1E8285E3002479B9 /* PhotoGridListController */,
 				E10F95891E8232D90098435F /* DataModel */,
 				E10F957C1E8230830098435F /* CommonUI */,
@@ -397,6 +407,19 @@
 			path = PhotoGridListController;
 			sourceTree = "<group>";
 		};
+		E1653B641E83792D002479B9 /* PhotoScrollController */ = {
+			isa = PBXGroup;
+			children = (
+				E1653B651E83793C002479B9 /* PhotoScrollController.h */,
+				E1653B661E83793C002479B9 /* PhotoScrollController.m */,
+				E1653B6B1E837A08002479B9 /* PhotoImageScaleCell.h */,
+				E1653B6C1E837A08002479B9 /* PhotoImageScaleCell.m */,
+				E1653B681E8379A1002479B9 /* BMImageScaleView.h */,
+				E1653B691E8379A1002479B9 /* BMImageScaleView.m */,
+			);
+			path = PhotoScrollController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1653B671E83793C002479B9 /* PhotoScrollController.m in Sources */,
 				E10F956A1E822A6D0098435F /* BMJWNagationController.m in Sources */,
 				E10F954F1E8226610098435F /* NSArray+adapter.m in Sources */,
 				E10F95511E8226610098435F /* NSMutableArray+adapter.m in Sources */,
@@ -529,6 +553,7 @@
 				E10F956E1E822AE20098435F /* HomeViewController.m in Sources */,
 				E10F95871E8230830098435F /* ToastAlertView.m in Sources */,
 				E10F95581E8226610098435F /* HRWebCatLogin.m in Sources */,
+				E1653B6D1E837A08002479B9 /* PhotoImageScaleCell.m in Sources */,
 				E10F95881E8230830098435F /* UIViewController+Method.m in Sources */,
 				E10F95501E8226610098435F /* NSDictionary+adapter.m in Sources */,
 				E10F957B1E822DA00098435F /* NetWorkEntity.m in Sources */,
@@ -552,6 +577,7 @@
 				E1653B5C1E827666002479B9 /* TripSegmentController.m in Sources */,
 				E10F95861E8230830098435F /* PortraitView.m in Sources */,
 				E10F95541E8226610098435F /* RFSegmentView.m in Sources */,
+				E1653B6A1E8379A1002479B9 /* BMImageScaleView.m in Sources */,
 				E10F95621E8227A90098435F /* UIImage+Scale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
