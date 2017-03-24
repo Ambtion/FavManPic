@@ -13,6 +13,7 @@
 #import "SDImageCache.h"
 #import "ToastAlertView.h"
 #import "RefreshTableView.h"
+#import "AppDelegate.h"
 
 
 @implementation UIViewController(Tips)
@@ -106,5 +107,14 @@
 
 }
 
+@end
+
+@implementation NSObject(Window)
+
+- (BOOL)isUserFavData
+{
+    AppDelegate * applicationDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return applicationDelegate.isUseFavMan;
+}
 @end
 

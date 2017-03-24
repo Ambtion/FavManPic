@@ -42,12 +42,17 @@
     UIView * view = [UIView new];
     [self.view addSubview:view];
     
-    self.segView = [[TripSegmentController alloc] initWithFrame:CGRectMake(0, (self.view.width - 200)/2.f, 200, 30)
-                                                                           data:@[@"最新",@"最热"]
-                                                                          Inset:UIEdgeInsetsMake(0, 25, 0, 25.f) spacing:50.f];
-    self.segView.seletedIndex = 0;
-    self.segView.delegate = self;
-     self.navigationItem.titleView = self.segView;
+    if ([self isUserFavData]) {
+        self.segView = [[TripSegmentController alloc] initWithFrame:CGRectMake(0, (self.view.width - 200)/2.f, 200, 30)
+                                                               data:@[@"最新",@"最热"]
+                                                              Inset:UIEdgeInsetsMake(0, 25, 0, 25.f) spacing:50.f];
+        self.segView.seletedIndex = 0;
+        self.segView.delegate = self;
+        self.navigationItem.titleView = self.segView;
+        
+    }else{
+        self.title = @"壁纸";
+    }
     
     self.tableView = [[RefreshTableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -57,6 +62,7 @@
     self.tableView.backgroundColor = UIColorFromRGB(0xf4f4f4);
 }
 
+
 - (void)initRefreshView
 {
     WS(ws);
@@ -64,9 +70,15 @@
         [ws quaryDataWithRefresh:YES];
     };
     
-    ws.tableView.refreshFooter.beginRefreshingBlock = ^(){
-        [ws quaryDataWithRefresh:NO];
-    };
+    if ([self isUserFavData]) {
+        ws.tableView.refreshFooter.beginRefreshingBlock = ^(){
+            [ws quaryDataWithRefresh:NO];
+        };
+   
+    }else{
+        self.tableView.refreshFooter = nil;
+
+    }
     
 }
 
@@ -97,7 +109,6 @@
     
     [NetWorkEntity quaryPhotoListWithPage:page photoPype:self.segView.seletedIndex authorId:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        [MBProgressHUD hideHUDForView:ws.view animated:YES];
         [ws.tableView.refreshHeader endRefreshing];
         [ws.tableView.refreshFooter endRefreshing];
         
@@ -105,6 +116,7 @@
             
             NSArray * list = [[responseObject objectForKey:@"data"] objectForKey:@"list"];
             if (list.count == 0) {
+                [MBProgressHUD hideHUDForView:ws.view animated:YES];
                 [self showTotasViewWithMes:@"已经最多"];
                 return ;
             }
@@ -117,12 +129,43 @@
                 [ws.dataSource addObjectsFromArray:[ws analysisPoiListModelFromArray:list]];
                 self.page++;
             }
-            [ws.tableView reloadData];
+            
+            if ([ws isUserFavData]) {
+                [MBProgressHUD hideHUDForView:ws.view animated:YES];
+                [ws.tableView reloadData];
+            }else{
+                [self fixDataSourceWithFailure:failure];
+            }
             
         }else{
+            [MBProgressHUD hideHUDForView:ws.view animated:YES];
             [ws showTotasViewWithMes:[responseObject objectForKey:@"msg"]];
         }
     } failure:failure];
+}
+
+- (void)fixDataSourceWithFailure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    [NetWorkEntity quaryCategoryListWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([[responseObject objectForKey:@"result"] isEqualToString:@"ok"] && [[[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"] count]) {
+            
+            NSArray * sourceList = [[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"];
+         
+            for (NSInteger i = 0; i < self.dataSource.count; i++) {
+                FMGroupModel * model = self.dataSource[i];
+                NSDictionary * info = sourceList[i % sourceList.count];
+                model.id = [info objectForKey:@"id"];
+                model.title = [info objectForKey:@"text"];
+                model.icon_url = [info objectForKey:@"icon_url"];
+            }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.tableView reloadData];
+        }else{
+            [self showTotasViewWithMes:@"网络异常"];
+        }
+        
+    } failure:failure];
+    
 }
 
 - (NSArray *)analysisPoiListModelFromArray:(NSArray *)array

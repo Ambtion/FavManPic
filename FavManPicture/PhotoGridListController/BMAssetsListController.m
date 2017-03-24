@@ -56,16 +56,46 @@
 
 - (void)loadDataSource
 {
-    NSString * contentUrl = [NSString stringWithFormat:@"%@%@/%@",[FMConfigManager sharedInstance].configModel.picture_url_header,self.groupModel.source.catalog,self.groupModel.issue];
-    NSMutableArray * dataMstr = [NSMutableArray arrayWithCapacity:0];
     
-    for (NSInteger i = 0; i < self.groupModel.pictureCount; i++) {
-        NSString * url = [NSString stringWithFormat:@"%@/%ld.jpg",contentUrl,(long)i];
-        [dataMstr addObject:url];
-    }
+    if ([self isUserFavData]) {
+        NSString * contentUrl = [NSString stringWithFormat:@"%@%@/%@",[FMConfigManager sharedInstance].configModel.picture_url_header,self.groupModel.source.catalog,self.groupModel.issue];
+        NSMutableArray * dataMstr = [NSMutableArray arrayWithCapacity:0];
+        
+        for (NSInteger i = 0; i < self.groupModel.pictureCount; i++) {
+            NSString * url = [NSString stringWithFormat:@"%@/%ld.jpg",contentUrl,(long)i];
+            [dataMstr addObject:url];
+        }
+        
+        self.dataSource = dataMstr;
+        [self.collectionView reloadData];
+    }else{
+        if(![MBProgressHUD HUDForView:self.view])
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [NetWorkEntity quaryCategoryDetailWithCatergoryId:self.groupModel.id Success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            if ([[responseObject objectForKey:@"result"] isEqualToString:@"ok"] && [[[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"] count]) {
+                NSArray * sourceList = [[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"];
+                NSMutableArray * iconUrl = [NSMutableArray arrayWithCapacity:0];
+                for (NSDictionary * info in sourceList) {
+                    [iconUrl addObject:[info objectForKey:@"img_url"]];
+                    
+                }
+                self.dataSource = iconUrl;
+                [self.collectionView reloadData];
+            }else{
+                [self showTotasViewWithMes:@"网络异常稍后重试"];
+            }
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self showTotasViewWithMes:@"网络异常稍后重试"];
+        }];
 
-    self.dataSource = dataMstr;
-    [self.collectionView reloadData];
+    }
+   
 }
 
 #pragma mark - Delegate
@@ -103,7 +133,7 @@ static NSInteger lineCount = 3;
 {
     BMAssetsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BMAssetsCell" forIndexPath:indexPath];
     NSString * url = self.dataSource[indexPath.row];
-    [[cell.posteImage imageView] sd_setImageWithURL:[NSURL URLWithString:url]];
+    [[cell.posteImage imageView] sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"default_cell"]];
     return cell;
 }
 

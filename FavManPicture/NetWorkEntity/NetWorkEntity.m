@@ -37,6 +37,27 @@ static CallBack upSucess;
     [self postMethodWithUrl:urlStr parameters:dic success:success failure:failure];
 
 }
+
+
+/*
+ * 壁纸
+ */
+
++ (void)quaryCategoryListWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString * urlStr = @"http://zaijiawan.com/matrix_common/api/image/wallpaperCategory?appname=daibizhidaquan";
+    [self getMethodWithUrl:urlStr parameters:nil success:success failure:failure];
+}
+
++ (void)quaryCategoryDetailWithCatergoryId:(NSString *)catgoryId
+                                  Success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString * urlStr = [NSString stringWithFormat:@"http://zaijiawan.com/matrix_common/api/image/wallpaperList?appname=daibizhidaquan&category_id=%@&page=1&count=100",catgoryId];
+    [self getMethodWithUrl:urlStr parameters:nil success:success failure:failure];
+}
+
 #pragma mark - Common
 
 + (void)getMethodWithUrl:(NSString *)url

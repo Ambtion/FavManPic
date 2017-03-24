@@ -51,6 +51,10 @@
 
 @property(nonatomic,strong)FMSourceModel * source;
 @property(nonatomic,strong)FMAuthorModel * author;
+
+@property(nonatomic,strong)NSString * icon_url;
+@property(nonatomic,strong)NSString * por_url;
+
 @end
 
 

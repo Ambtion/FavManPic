@@ -149,8 +149,13 @@
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:_groupModel.createTime/ 1000.f];
     self.createTime.text = [[[DataConvert shareInstance] dateFormatter] stringFromDate:date];
     
-    NSString * contentUrl = [NSString stringWithFormat:@"%@%@/%@/%@",[FMConfigManager sharedInstance].configModel.picture_url_header,groupModel.source.catalog,groupModel.issue,groupModel.headImageFilename];
-    [self.contentImageView.imageView sd_setImageWithURL:[NSURL URLWithString:contentUrl]];
+    if ([self isUserFavData]) {
+        NSString * contentUrl = [NSString stringWithFormat:@"%@%@/%@/%@",[FMConfigManager sharedInstance].configModel.picture_url_header,groupModel.source.catalog,groupModel.issue,groupModel.headImageFilename];
+        [self.contentImageView.imageView sd_setImageWithURL:[NSURL URLWithString:contentUrl] placeholderImage:[UIImage imageNamed:@"default_cell"]];
+    }else{
+        [self.contentImageView.imageView sd_setImageWithURL:[NSURL URLWithString:_groupModel.icon_url] placeholderImage:[UIImage imageNamed:@"default_cell"]];
+
+    }
     
     self.groupTitle.text = _groupModel.title;
     

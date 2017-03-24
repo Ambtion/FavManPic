@@ -29,3 +29,8 @@
 - (void)dealErrorResponseWithTableView:(RefreshTableView *)tableview info:(NSDictionary *)dic;
 - (void)netErrorWithTableView:(RefreshTableView*)tableView;
 @end
+
+
+@interface NSObject(Window)
+- (BOOL)isUserFavData;
+@end

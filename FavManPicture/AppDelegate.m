@@ -30,6 +30,8 @@
     [self initAllComCoreWithLangchOptions:launchOptions];
     [self setDefoultNavBarStyle];
 
+    self.isUseFavMan = NO;
+    
     self.navController = [[BMJWNagationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];

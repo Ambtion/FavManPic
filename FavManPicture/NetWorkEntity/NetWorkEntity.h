@@ -29,5 +29,18 @@
                        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+
+/*
+ * 壁纸
+ */
+
++ (void)quaryCategoryListWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+
++ (void)quaryCategoryDetailWithCatergoryId:(NSString *)catgoryId
+                                  Success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 @end
 

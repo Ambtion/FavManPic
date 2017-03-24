@@ -158,9 +158,10 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
     NSString * mp3Url = [NSString stringWithFormat:@"%@%ld.mp3",[[FMConfigManager sharedInstance] configModel].sound_url_header,(rand() % [[FMConfigManager sharedInstance] configModel].audio_count) + 1];
     NSURL * url = [NSURL URLWithString:mp3Url];
     
-    self.player = [AVPlayer playerWithURL:url];
-    
-    [self.player play];
+    if([self isUserFavData]){
+        self.player = [AVPlayer playerWithURL:url];
+        [self.player play];
+    }
 
 }
 
