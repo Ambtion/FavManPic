@@ -15,6 +15,7 @@
 @property(nonatomic,strong)UICollectionView * collectionView;
 @property(nonatomic,strong)FMGroupModel * groupModel;
 @property(nonatomic,strong)NSArray * dataSource;
+@property(nonatomic,strong)NSArray * oriSource;
 
 @end
 
@@ -77,12 +78,15 @@
             
             if ([[responseObject objectForKey:@"result"] isEqualToString:@"ok"] && [[[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"] count]) {
                 NSArray * sourceList = [[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"];
-                NSMutableArray * iconUrl = [NSMutableArray arrayWithCapacity:0];
+                NSMutableArray * thumbUrl = [NSMutableArray arrayWithCapacity:0];
+                NSMutableArray * orUrl = [NSMutableArray arrayWithCapacity:0];
                 for (NSDictionary * info in sourceList) {
-                    [iconUrl addObject:[info objectForKey:@"img_url"]];
-                    
+                    [thumbUrl addObject:[info objectForKey:@"thumbnail"]];
+                    [orUrl addObject:[info objectForKey:@"img_url"]];
+
                 }
-                self.dataSource = iconUrl;
+                self.dataSource = thumbUrl;
+                self.oriSource = orUrl;
                 [self.collectionView reloadData];
             }else{
                 [self showTotasViewWithMes:@"网络异常稍后重试"];
@@ -140,7 +144,11 @@ static NSInteger lineCount = 3;
 #pragma mark Action
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PhotoScrollController * phS = [[PhotoScrollController alloc] initWithGropAsset:self.dataSource];
+    NSArray * dataSource = self.dataSource;
+    if (!self.isUserFavData) {
+        dataSource = self.oriSource;
+    }
+    PhotoScrollController * phS = [[PhotoScrollController alloc] initWithGropAsset:dataSource];
     [self.navigationController pushViewController:phS animated:YES];
 }
 
