@@ -30,13 +30,32 @@
     [self initAllComCoreWithLangchOptions:launchOptions];
     [self setDefoultNavBarStyle];
 
-    self.isUseFavMan = NO;
+    
+    
+    self.isUseFavMan = [self getFavStatuFromNet];
     
     self.navController = [[BMJWNagationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
 
     return YES;
+}
+
+- (BOOL)getFavStatuFromNet
+{
+    NSString * urlStr = [NSString stringWithFormat:@"https://github.com/Ambtion/client/blob/master/favManPicture/favManConfg/dataPoint.txt?raw=ture&tm=%f",[[NSDate date] timeIntervalSince1970]];
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
+    
+    
+    if (data) {
+        NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        if (dic) {
+            return [[dic objectForKey:@"UseFavManData"] boolValue];
+        }
+
+    }
+    return NO;
+    
 }
 
 
