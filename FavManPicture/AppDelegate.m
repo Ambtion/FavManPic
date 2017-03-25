@@ -46,7 +46,8 @@
     NSString * urlStr = [NSString stringWithFormat:@"https://github.com/Ambtion/client/blob/master/favManPicture/favManConfg/dataPoint.txt?raw=ture&tm=%f",[[NSDate date] timeIntervalSince1970]];
     NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
     
-    
+    // https://github.com/Ambtion/client/blob/master/favManPicture/favManConfg/dataPoint.txt?raw=ture&tm=1490435589.555568
+
     if (data) {
         NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         if (dic) {
