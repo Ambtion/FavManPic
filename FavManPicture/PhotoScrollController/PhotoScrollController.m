@@ -244,10 +244,27 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
     NSString * url = self.dataSource[indexPath.row];
     [[cell scaleImageView].imageView startLoading];
     [cell.scaleImageView.imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        CGSize size = [self getIdentifyImageSizeWithImageView:image];
+        cell.scaleImageView.imageView.frame = CGRectMake(0, 0, size.width, size.height);
+        cell.scaleImageView.imageView.centerY = cell.height/2.f;
         [[cell scaleImageView].imageView stopLoading];
+        
     }];
     return cell;
 }
+
+- (CGSize)getIdentifyImageSizeWithImageView:(UIImage *)image
+{
+    if (!image) return CGSizeZero;
+    CGFloat w = image.size.width;
+    CGFloat h = image.size.height;
+    CGRect frameRect = self.view.bounds;
+    CGRect rect = CGRectZero;
+    CGFloat scale = MIN(frameRect.size.width / w, frameRect.size.height / h);
+    rect = CGRectMake(0, 0, w * scale, h * scale);
+    return rect.size;
+}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

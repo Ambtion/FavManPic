@@ -51,7 +51,7 @@
         self.navigationItem.titleView = self.segView;
         
     }else{
-        self.title = @"壁纸";
+        self.title = @"美图";
     }
     
     self.tableView = [[RefreshTableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height - 64) style:UITableViewStylePlain];
