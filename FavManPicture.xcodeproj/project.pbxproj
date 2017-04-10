@@ -40,6 +40,7 @@
 		E10F95871E8230830098435F /* ToastAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10F95821E8230830098435F /* ToastAlertView.m */; };
 		E10F95881E8230830098435F /* UIViewController+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = E10F95841E8230830098435F /* UIViewController+Method.m */; };
 		E10F958C1E8232D90098435F /* HereDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E10F958B1E8232D90098435F /* HereDataModel.m */; };
+		E1303A611E8BA2E0005E2A68 /* HcdActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1303A601E8BA2E0005E2A68 /* HcdActionSheet.m */; };
 		E1653B2C1E825627002479B9 /* FMConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B2B1E825627002479B9 /* FMConfigManager.m */; };
 		E1653B411E826344002479B9 /* HomeGropCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B401E826344002479B9 /* HomeGropCell.m */; };
 		E1653B441E8267C2002479B9 /* DataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B431E8267C2002479B9 /* DataConvert.m */; };
@@ -123,6 +124,8 @@
 		E10F95841E8230830098435F /* UIViewController+Method.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Method.m"; sourceTree = "<group>"; };
 		E10F958A1E8232D90098435F /* HereDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HereDataModel.h; sourceTree = "<group>"; };
 		E10F958B1E8232D90098435F /* HereDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HereDataModel.m; sourceTree = "<group>"; };
+		E1303A5F1E8BA2E0005E2A68 /* HcdActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HcdActionSheet.h; sourceTree = "<group>"; };
+		E1303A601E8BA2E0005E2A68 /* HcdActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdActionSheet.m; sourceTree = "<group>"; };
 		E1653B2A1E825627002479B9 /* FMConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMConfigManager.h; sourceTree = "<group>"; };
 		E1653B2B1E825627002479B9 /* FMConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMConfigManager.m; sourceTree = "<group>"; };
 		E1653B3F1E826344002479B9 /* HomeGropCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeGropCell.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 		E10F951B1E8226610098435F /* ThirdPary */ = {
 			isa = PBXGroup;
 			children = (
+				E1303A5F1E8BA2E0005E2A68 /* HcdActionSheet.h */,
+				E1303A601E8BA2E0005E2A68 /* HcdActionSheet.m */,
 				E10F951C1E8226610098435F /* LJException */,
 				E10F952B1E8226610098435F /* Refresh */,
 				E10F95311E8226610098435F /* RFSegmentView */,
@@ -569,6 +574,7 @@
 				E10F95561E8226610098435F /* UIView+TKCategory.m in Sources */,
 				E1653B2C1E825627002479B9 /* FMConfigManager.m in Sources */,
 				E10F95551E8226610098435F /* UIView+Sizes.m in Sources */,
+				E1303A611E8BA2E0005E2A68 /* HcdActionSheet.m in Sources */,
 				E10F954C1E8226610098435F /* JRSwizzle.m in Sources */,
 				E10F94961E8221BF0098435F /* main.m in Sources */,
 				E1653B411E826344002479B9 /* HomeGropCell.m in Sources */,

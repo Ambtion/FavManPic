@@ -42,5 +42,21 @@
                                   Success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                   failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+/*
+ * https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1&pass_ticket=s%2FrUv1HUNNFVWlO%2Fc9OaEPMTd5ZTugXUTXZ2%2FRcnSjgImlodidKdoiuKqdV8OZgt
+ */
++ (void)quaryPayOrderIdWithAppleId:(NSString *)appleId
+                            mch_id:(NSString *)mch_id
+                         nonce_str:(NSString *)nonce_str
+                              body:(NSString *)body
+                      out_trade_no:(NSString *)out_trade_no
+                         total_fee:(NSString *)total_fee
+                  spbill_create_ip:(NSString *)spbill_create_ip //Native支付填调用微信支付API的机器IP
+                        trade_type:(NSString *)trade_type
+                        notify_url:(NSString *)notify_url
+                           Success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+
 @end
 

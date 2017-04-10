@@ -59,4 +59,18 @@
     FMCommonModel* model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return model;
 }
+
+static NSString * payIndentiy = @"payIndentiy";
+
+- (BOOL)isPay
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:payIndentiy];
+}
+
+- (void)setPay:(BOOL)isPay
+{
+    [[NSUserDefaults standardUserDefaults] setValue:@(isPay) forKey:payIndentiy];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 @end

@@ -18,4 +18,9 @@
 
 - (void)quaryConfig;
 
+- (BOOL)isPay;
+
+- (void)setPay:(BOOL)isPay;
+
 @end
+

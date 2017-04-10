@@ -9,6 +9,8 @@
 #import "BMAssetsListController.h"
 #import "BMAssetsCell.h"
 #import "PhotoScrollController.h"
+#import "HcdActionSheet.h"
+#import "HTWebPay.h"
 
 @interface BMAssetsListController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -53,6 +55,41 @@
 {
     [super viewWillAppear:animated];
     self.title = self.groupModel.title;
+    [self  refreshRighButton];
+}
+
+- (void)refreshRighButton
+{
+    if ([[FMConfigManager sharedInstance] isPay]) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }else{
+        self.navigationItem.rightBarButtonItems = @[[self createBuyButton],[self barSpaingItem]];
+    }
+}
+
+-(UIBarButtonItem*) createBuyButton
+{
+    CGRect backframe= CGRectMake(0, 0, 28, 28);
+    UIButton* backButton= [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = backframe;
+    [backButton setImage:[UIImage imageNamed:@"buy"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"buy"] forState:UIControlStateHighlighted];
+    [backButton addTarget:self action:@selector(payForAction) forControlEvents:UIControlEventTouchUpInside];
+    //定制自己的风格的  UIBarButtonItem
+    UIBarButtonItem* someBarButtonItem= [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    return someBarButtonItem;
+    
+}
+
+- (UIBarButtonItem*)barSpaingItem
+{
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       
+                                       target:nil action:nil];
+    negativeSpacer.width = -12;
+    return negativeSpacer;
 }
 
 - (void)loadDataSource
@@ -144,6 +181,12 @@ static NSInteger lineCount = 3;
 #pragma mark Action
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (![[FMConfigManager sharedInstance] isPay]) {
+        [self payForAction];
+        return;
+    }
+    
     NSArray * dataSource = self.dataSource;
     if (!self.isUserFavData) {
         dataSource = self.oriSource;
@@ -152,4 +195,25 @@ static NSInteger lineCount = 3;
     [self.navigationController pushViewController:phS animated:YES];
 }
 
+#pragma mark - 
+
+- (void)payForAction
+{
+    HcdActionSheet *sheet = [[HcdActionSheet alloc] initWithCancelStr:@"取消"
+                                                    otherButtonTitles:@[@"6元/月",@"36元/年"]
+                                                          attachTitle:nil];
+    
+    sheet.selectButtonAtIndex = ^(NSInteger index) {
+        if (index == 1) {
+//            [HTWebPay sendPayRequestWithPayInfo:<#(id)#> callBack:<#^(BaseResp *resp)callBack#>]
+        }
+        
+        if (index == 2) {
+            
+        }
+    };
+    [[UIApplication sharedApplication].keyWindow addSubview:sheet];
+    [sheet showHcdActionSheet];
+
+}
 @end
