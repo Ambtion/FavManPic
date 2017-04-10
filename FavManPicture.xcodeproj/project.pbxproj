@@ -56,7 +56,7 @@
 		3F45DBA567E275649C0F7B8A /* Pods-FavManPicture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavManPicture.release.xcconfig"; path = "Pods/Target Support Files/Pods-FavManPicture/Pods-FavManPicture.release.xcconfig"; sourceTree = "<group>"; };
 		464174E431329BA02A9FC9EB /* Pods-FavManPicture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FavManPicture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FavManPicture/Pods-FavManPicture.debug.xcconfig"; sourceTree = "<group>"; };
 		980B3661924FB016CDA11E8D /* libPods-FavManPicture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FavManPicture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E10F94911E8221BF0098435F /* FavManPicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavManPicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10F94911E8221BF0098435F /* 宅男夜想.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "宅男夜想.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10F94951E8221BF0098435F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E10F94971E8221BF0098435F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FavManPicture/AppDelegate.h; sourceTree = "<group>"; };
 		E10F94981E8221BF0098435F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FavManPicture/AppDelegate.m; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		E10F94921E8221BF0098435F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E10F94911E8221BF0098435F /* FavManPicture.app */,
+				E10F94911E8221BF0098435F /* 宅男夜想.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -445,7 +445,7 @@
 			);
 			name = FavManPicture;
 			productName = FavManPicture;
-			productReference = E10F94911E8221BF0098435F /* FavManPicture.app */;
+			productReference = E10F94911E8221BF0098435F /* 宅男夜想.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -696,8 +696,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FavManPicture/WebCatModule/WebCatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = lin.FavManPicture;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lin.FavManPicture;
+				PRODUCT_NAME = "宅男夜想";
 				PROVISIONING_PROFILE = "904a69b3-171d-4e17-a243-23e2e9d9c524";
 				PROVISIONING_PROFILE_SPECIFIER = dev_any;
 			};
@@ -719,8 +719,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FavManPicture/WebCatModule/WebCatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = lin.FavManPicture;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lin.FavManPicture;
+				PRODUCT_NAME = "宅男夜想";
 				PROVISIONING_PROFILE_SPECIFIER = adhot_any;
 			};
 			name = Release;

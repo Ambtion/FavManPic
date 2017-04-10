@@ -60,10 +60,11 @@
 
 - (void)refreshRighButton
 {
-    if ([[FMConfigManager sharedInstance] isPay]) {
-        self.navigationItem.rightBarButtonItem = nil;
-    }else{
+    
+    if ([self isUserFavData] && ![[FMConfigManager sharedInstance] isPay] ) {
         self.navigationItem.rightBarButtonItems = @[[self createBuyButton],[self barSpaingItem]];
+    }else{
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 
@@ -182,7 +183,7 @@ static NSInteger lineCount = 3;
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (![[FMConfigManager sharedInstance] isPay]) {
+    if ([self isUserFavData] && ![[FMConfigManager sharedInstance] isPay] ) {
         [self payForAction];
         return;
     }
