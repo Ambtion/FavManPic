@@ -233,7 +233,6 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
     }
 }
 
-
 #pragma mark - Delegate
 #pragma mark source
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -247,6 +246,9 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
     cell.delegate = self;
     NSString * url = self.dataSource[indexPath.row];
     [[cell scaleImageView].imageView startLoading];
+    cell.scaleImageView.imageView.frame = CGRectMake(0, 0, self.view.width, self.view.width);
+    cell.scaleImageView.imageView.centerY = cell.height/2.f;
+    cell.scaleImageView.zoomScale = 1.f;
     [cell.scaleImageView.imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         CGSize size = [self getIdentifyImageSizeWithImageView:image];
         cell.scaleImageView.imageView.frame = CGRectMake(0, 0, size.width, size.height);
