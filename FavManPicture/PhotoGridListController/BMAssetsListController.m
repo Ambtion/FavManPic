@@ -210,19 +210,28 @@ static NSInteger lineCount = 3;
     
     sheet.selectButtonAtIndex = ^(NSInteger index) {
         if (index == 1) {
-            // paySucess_M 、 paySucess_M
-            // payFail
-            [MobClick event:@"payAction" attributes:@{
+            // paySucess
+            // failPay
+            [MobClick event:@"payForAction" attributes:@{
                                                       @"type":@"month"
                                                       }];
+
+            
+//            [MobClick event:@"paySucess" attributes:@{
+//                                                      @"type":@"month"
+//                                                      } counter:6];
 
 //            [HTWebPay sendPayRequestWithPayInfo:<#(id)#> callBack:<#^(BaseResp *resp)callBack#>]
         }
         
         if (index == 2) {
-            [MobClick event:@"payAction" attributes:@{
+            [MobClick event:@"payForAction" attributes:@{
                                                       @"type":@"year"
                                                       }];
+//            [MobClick event:@"sucessPay" attributes:@{
+//                                                      @"type":@"month"
+//                                                      } counter:36];
+
         }
     };
     [[UIApplication sharedApplication].keyWindow addSubview:sheet];
