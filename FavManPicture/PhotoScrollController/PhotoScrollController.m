@@ -25,16 +25,17 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 
 @property(nonatomic,strong)NSTimer * rotateTimer;
 @property(nonatomic,strong)AVPlayer * player;
-
+@property(nonatomic,assign)NSInteger defaultIndex;
 @end
 
 @implementation PhotoScrollController
 
-- (instancetype)initWithGropAsset:(NSArray *)photoArrays
+- (instancetype)initWithGropAsset:(NSArray *)photoArrays defaultIndex:(NSInteger)defaultIndex
 {
     self = [super init];
     if (self) {
         self.dataSource = photoArrays;
+        self.defaultIndex = defaultIndex;
     }
     return self;
 }
@@ -50,7 +51,6 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -85,7 +85,11 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
     [self.view addSubview:self.colletctionView];
     
     [self.colletctionView registerClass:[PhotoImageScaleCell class] forCellWithReuseIdentifier:@"PhotoImageScaleCell"];
+    [self.colletctionView reloadData];
+
     
+    [self.colletctionView setContentOffset:CGPointMake(self.view.width * self.defaultIndex, 0)];
+
     [self initCustNavBar];
     
 }

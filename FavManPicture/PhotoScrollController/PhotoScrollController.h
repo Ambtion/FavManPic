@@ -10,6 +10,6 @@
 
 @interface PhotoScrollController : UIViewController
 
-- (instancetype)initWithGropAsset:(NSArray *)photoArrays;
+- (instancetype)initWithGropAsset:(NSArray *)photoArrays defaultIndex:(NSInteger)defaultIndex;
 
 @end

@@ -192,7 +192,7 @@ static NSInteger lineCount = 3;
     if (!self.isUserFavData) {
         dataSource = self.oriSource;
     }
-    PhotoScrollController * phS = [[PhotoScrollController alloc] initWithGropAsset:dataSource];
+    PhotoScrollController * phS = [[PhotoScrollController alloc] initWithGropAsset:dataSource defaultIndex:indexPath.row];
     [self.navigationController pushViewController:phS animated:YES];
 }
 

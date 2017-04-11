@@ -44,7 +44,7 @@
 
 - (BOOL)getFavStatuFromNet
 {
-    NSString * urlStr = [NSString stringWithFormat:@"https://github.com/Ambtion/client/blob/master/favManPicture/favManConfg/dataPoint.txt?raw=ture&tm=%f",[[NSDate date] timeIntervalSince1970]];
+    NSString * urlStr = [NSString stringWithFormat:@"http://sv.yi-lv.com/index.php?qt=test&cm=test"];
     NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
     
     // https://github.com/Ambtion/client/blob/master/favManPicture/favManConfg/dataPoint.txt?raw=ture&tm=1490435589.555568
@@ -52,7 +52,7 @@
     if (data) {
         NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         if (dic) {
-            return [[dic objectForKey:@"UseFavManData"] boolValue];
+            return [[[dic objectForKey:@"content"] objectForKey:@"res_key"] boolValue];
         }
 
     }
