@@ -34,7 +34,8 @@
     
     self.isUseFavMan = [self getFavStatuFromNet];
     
-        
+    self.isUseFavMan = YES;
+    
     self.navController = [[BMJWNagationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
@@ -54,7 +55,6 @@
         if (dic) {
             return [[[dic objectForKey:@"content"] objectForKey:@"res_key"] boolValue];
         }
-
     }
     return NO;
     
@@ -95,7 +95,7 @@
     [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
     [[AFNetworkActivityLogger sharedLogger] startLogging];
     
-    UMConfigInstance.appKey = @"57737e9267e58e6f780026b3";
+    UMConfigInstance.appKey = @"58ec8f284544cb5463000d15";
     UMConfigInstance.channelId = @"App Store";
     [MobClick startWithConfigure:UMConfigInstance];
     

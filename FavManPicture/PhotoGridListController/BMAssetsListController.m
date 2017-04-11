@@ -11,6 +11,7 @@
 #import "PhotoScrollController.h"
 #import "HcdActionSheet.h"
 #import "HTWebPay.h"
+#import <UMMobClick/MobClick.h>
 
 @interface BMAssetsListController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -200,17 +201,28 @@ static NSInteger lineCount = 3;
 
 - (void)payForAction
 {
+    
+    
+
     HcdActionSheet *sheet = [[HcdActionSheet alloc] initWithCancelStr:@"取消"
                                                     otherButtonTitles:@[@"6元/月",@"36元/年"]
                                                           attachTitle:nil];
     
     sheet.selectButtonAtIndex = ^(NSInteger index) {
         if (index == 1) {
+            // paySucess_M 、 paySucess_M
+            // payFail
+            [MobClick event:@"payAction" attributes:@{
+                                                      @"type":@"month"
+                                                      }];
+
 //            [HTWebPay sendPayRequestWithPayInfo:<#(id)#> callBack:<#^(BaseResp *resp)callBack#>]
         }
         
         if (index == 2) {
-            
+            [MobClick event:@"payAction" attributes:@{
+                                                      @"type":@"year"
+                                                      }];
         }
     };
     [[UIApplication sharedApplication].keyWindow addSubview:sheet];

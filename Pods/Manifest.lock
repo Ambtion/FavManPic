@@ -26,10 +26,10 @@ PODS:
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - NSString-Hash (0.0.1)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
-  - UMengAnalytics (4.1.10)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - UMengAnalytics (4.2.4)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -48,10 +48,10 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   NSString-Hash: 59c428d8a5f0f85ec443ef9865107832b8a845e7
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  UMengAnalytics: 40585031b7eb085534c68a951b394731e7166257
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 PODFILE CHECKSUM: cd65c6577f04193889b307076727662c2b153f39
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.1.rc.1
