@@ -11,7 +11,7 @@
 #import "HomeGropCell.h"
 #import "TripSegmentController.h"
 #import "BMAssetsListController.h"
-
+#import "AboutViewController.h"
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,TripSegmentControllerDelegate,HomeGropCellDelegate>
 
@@ -41,6 +41,7 @@
 {
     UIView * view = [UIView new];
     [self.view addSubview:view];
+    
     
     if ([self isUserFavData]) {
         self.segView = [[TripSegmentController alloc] initWithFrame:CGRectMake(0, (self.view.width - 200)/2.f, 200, 30)
@@ -223,7 +224,7 @@
 
 - (void)homeGropCellheadViewDidCick:(HomeGropCell *)cell
 {
-    
+//    [self.navigationController pushViewController:[[AboutViewController alloc] init] animated:YES];
 }
 
 -(void)tripSegmentController:(TripSegmentController *)segmentedControl selectedIndex:(NSInteger)index

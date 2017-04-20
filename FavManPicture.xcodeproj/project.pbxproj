@@ -50,6 +50,7 @@
 		E1653B671E83793C002479B9 /* PhotoScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B661E83793C002479B9 /* PhotoScrollController.m */; };
 		E1653B6A1E8379A1002479B9 /* BMImageScaleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B691E8379A1002479B9 /* BMImageScaleView.m */; };
 		E1653B6D1E837A08002479B9 /* PhotoImageScaleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1653B6C1E837A08002479B9 /* PhotoImageScaleCell.m */; };
+		E1E9380D1EA8A76000492AEA /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E9380C1EA8A76000492AEA /* AboutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +145,8 @@
 		E1653B691E8379A1002479B9 /* BMImageScaleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMImageScaleView.m; sourceTree = "<group>"; };
 		E1653B6B1E837A08002479B9 /* PhotoImageScaleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoImageScaleCell.h; sourceTree = "<group>"; };
 		E1653B6C1E837A08002479B9 /* PhotoImageScaleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoImageScaleCell.m; sourceTree = "<group>"; };
+		E1E9380B1EA8A76000492AEA /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		E1E9380C1EA8A76000492AEA /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,8 @@
 				E10F95771E822D6A0098435F /* PrefixHeader.pch */,
 				E10F94971E8221BF0098435F /* AppDelegate.h */,
 				E10F94981E8221BF0098435F /* AppDelegate.m */,
+				E1E9380B1EA8A76000492AEA /* AboutViewController.h */,
+				E1E9380C1EA8A76000492AEA /* AboutViewController.m */,
 				E10F94931E8221BF0098435F /* FavManPicture */,
 				E10F94921E8221BF0098435F /* Products */,
 				55980866CC110968118653CF /* Pods */,
@@ -571,6 +576,7 @@
 				E10F955B1E8226610098435F /* HTWebPay.m in Sources */,
 				E10F958C1E8232D90098435F /* HereDataModel.m in Sources */,
 				E10F954D1E8226610098435F /* LJException.m in Sources */,
+				E1E9380D1EA8A76000492AEA /* AboutViewController.m in Sources */,
 				E10F95561E8226610098435F /* UIView+TKCategory.m in Sources */,
 				E1653B2C1E825627002479B9 /* FMConfigManager.m in Sources */,
 				E10F95551E8226610098435F /* UIView+Sizes.m in Sources */,
