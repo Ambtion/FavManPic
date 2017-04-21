@@ -205,7 +205,7 @@ static NSInteger lineCount = 3;
     
 
     HcdActionSheet *sheet = [[HcdActionSheet alloc] initWithCancelStr:@"取消"
-                                                    otherButtonTitles:@[@"6元/月",@"36元/年"]
+                                                    otherButtonTitles:@[@"6元/月(微信支付)",@"36元/年(微信支付)"]
                                                           attachTitle:nil];
     
     sheet.selectButtonAtIndex = ^(NSInteger index) {
