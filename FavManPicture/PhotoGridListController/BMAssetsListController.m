@@ -12,6 +12,7 @@
 #import "HcdActionSheet.h"
 #import "HTWebPay.h"
 #import <UMMobClick/MobClick.h>
+#import "NetWorkEntity.h"
 
 @interface BMAssetsListController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -217,20 +218,85 @@ static NSInteger lineCount = 3;
                                                       }];
 
             
-//            [MobClick event:@"paySucess" attributes:@{
-//                                                      @"type":@"month"
-//                                                      } counter:6];
+            WS(ws);
+            
+            if(![MBProgressHUD HUDForView:self.view])
+                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            
+            
+            [NetWorkEntity getDepositInfoWithWithManayCount:100 * 6 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                [MBProgressHUD hideHUDForView:ws.view animated:YES];
+                
+                if ([[[responseObject objectForKey:@"result"] objectForKey:@"error"] intValue] == 0) {
+                    NSDictionary * dic = [responseObject objectForKey:@"content"];
+                    WebPayInfoModel * model  = [WebPayInfoModel yy_modelWithJSON:dic];
+                    [HTWebPay sendPayRequestWithPayInfo:model callBack:^(BaseResp *resp) {
+                        if (resp.errCode == 0) {
+                            [ws showTotasViewWithMes:@"支付成功"];
+                            [[FMConfigManager sharedInstance] setPay:YES];
+                            //[MobClick event:@"paySucess" attributes:@{ @"type":@"month"} counter:6];
+                        }else{
+                            [ws showTotasViewWithMes:@"支付失败"];
+                            
+                        }
+                    }];
+                    
+                }else{
+                    [ws showTotasViewWithMes:[[responseObject objectForKey:@"result"] objectForKey:@"msg"]];
+                }
+                
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [self showTotasViewWithMes:@"网络异常,稍后重试"];
+                [MBProgressHUD hideHUDForView:ws.view animated:YES];
+                
+            }];
 
-//            [HTWebPay sendPayRequestWithPayInfo:<#(id)#> callBack:<#^(BaseResp *resp)callBack#>]
+
         }
         
         if (index == 2) {
             [MobClick event:@"payForAction" attributes:@{
                                                       @"type":@"year"
                                                       }];
-//            [MobClick event:@"sucessPay" attributes:@{
-//                                                      @"type":@"month"
-//                                                      } counter:36];
+
+            WS(ws);
+            
+            if(![MBProgressHUD HUDForView:self.view])
+                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            
+            
+            [NetWorkEntity getDepositInfoWithWithManayCount:100 * 36 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                [MBProgressHUD hideHUDForView:ws.view animated:YES];
+                
+                if ([[[responseObject objectForKey:@"result"] objectForKey:@"error"] intValue] == 0) {
+                    NSDictionary * dic = [responseObject objectForKey:@"content"];
+                    WebPayInfoModel * model  = [WebPayInfoModel yy_modelWithJSON:dic];
+                    [HTWebPay sendPayRequestWithPayInfo:model callBack:^(BaseResp *resp) {
+                        if (resp.errCode == 0) {
+                            [ws showTotasViewWithMes:@"支付成功"];
+                            [[FMConfigManager sharedInstance] setPay:YES];
+                            //[MobClick event:@"paySucess" attributes:@{ @"type":@"month"} counter:36];
+                        }else{
+                            [ws showTotasViewWithMes:@"支付失败"];
+                            
+                        }
+                    }];
+                    
+                }else{
+                    [ws showTotasViewWithMes:[[responseObject objectForKey:@"result"] objectForKey:@"msg"]];
+                }
+                
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [self showTotasViewWithMes:@"网络异常,稍后重试"];
+                [MBProgressHUD hideHUDForView:ws.view animated:YES];
+                
+            }];
+            
+            
 
         }
     };

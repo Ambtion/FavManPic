@@ -58,6 +58,18 @@ static CallBack upSucess;
     [self getMethodWithUrl:urlStr parameters:nil success:success failure:failure];
 }
 
++ (void)getDepositInfoWithWithManayCount:(NSInteger)count
+                      success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                      failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSDictionary * dic = @{@"qt":@"test",
+                           @"cm":@"pay",
+                           @"cash":@(count)
+                           };
+    NSString * urlStr = [NSString stringWithFormat:@"%@",@"http://sv.yi-lv.com/index.php"];
+    [self getMethodWithUrl:urlStr parameters:dic success:success failure:failure];
+}
+
 #pragma mark - Common
 
 + (void)getMethodWithUrl:(NSString *)url

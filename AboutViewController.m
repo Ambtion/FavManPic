@@ -39,7 +39,7 @@
     }];
     
     UILabel * bottom = [[UILabel alloc] init];
-    bottom.text = @"Copyright @ 2017-2018 Favman inc. All right reserved";
+    bottom.text = @"2017 Yijiameng Inc 北京忆嘉萌文化传播有限公司";
     bottom.textColor = UIColorFromRGB(0x333333);
     bottom.font = [UIFont systemFontOfSize:10];
     [self.view addSubview:bottom];

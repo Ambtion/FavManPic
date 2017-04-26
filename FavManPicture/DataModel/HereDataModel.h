@@ -66,3 +66,14 @@
 @property(nonatomic,assign)NSInteger audio_count;
 
 @end
+
+@interface WebPayInfoModel : NSObject
+@property(nonatomic,strong)NSString * appid;
+@property(nonatomic,strong)NSString * partnerid;
+@property(nonatomic,strong)NSString * prepayid;
+@property(nonatomic,assign)UInt32 timestamp;
+@property(nonatomic,strong)NSString * noncestr;
+@property(nonatomic,strong)NSString * package;
+@property(nonatomic,strong)NSString * sign;
+@property(nonatomic,assign)NSInteger needPay;
+@end

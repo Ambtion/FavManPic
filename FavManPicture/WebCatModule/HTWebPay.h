@@ -12,6 +12,6 @@
 
 @interface HTWebPay : NSObject
 
-+ (void)sendPayRequestWithPayInfo:(id)payInfo callBack:(void(^)(BaseResp *resp))callBack;
++ (void)sendPayRequestWithPayInfo:(WebPayInfoModel * )payInfo callBack:(void(^)(BaseResp *resp))callBack;
 
 @end

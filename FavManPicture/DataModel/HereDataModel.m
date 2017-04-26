@@ -46,3 +46,9 @@ YYModelSynthCoderAndHash
 YYModelSynthCoderAndHash
 
 @end
+
+@implementation WebPayInfoModel
+
+YYModelSynthCoderAndHash
+
+@end
