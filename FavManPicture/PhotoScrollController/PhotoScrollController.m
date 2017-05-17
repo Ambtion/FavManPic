@@ -139,18 +139,21 @@ const NSTimeInterval CarOwnerActivityScrollTimerInterval = 3.0f;
     [self.playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateSelected];
     [self.downloadButton setImage:[UIImage imageNamed:@"download"]  forState:UIControlStateNormal];
     
-    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(backButton);
         make.right.equalTo(self.cusNavBar).offset(-12);
         make.size.mas_offset(CGSizeMake(30, 30));
     }];
     
-    [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(self.playButton);
-        make.centerY.equalTo(self.playButton);
-        make.right.equalTo(self.playButton.mas_left).offset(-10);
+    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(self.downloadButton);
+        make.centerY.equalTo(self.downloadButton);
+        make.right.equalTo(self.downloadButton.mas_left).offset(-10);
     }];
 
+    [self.playButton setHidden:![self isUserFavData]];
+
+    
 
 }
 
