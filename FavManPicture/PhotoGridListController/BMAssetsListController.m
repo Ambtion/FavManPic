@@ -123,7 +123,6 @@
                 for (NSDictionary * info in sourceList) {
                     [thumbUrl addObject:[info objectForKey:@"thumbnail"]];
                     [orUrl addObject:[info objectForKey:@"img_url"]];
-
                 }
                 self.dataSource = thumbUrl;
                 self.oriSource = orUrl;
@@ -203,7 +202,7 @@ static NSInteger lineCount = 3;
 - (void)payForAction
 {
     
-    
+    NSInteger payUnit = 100;
 
     HcdActionSheet *sheet = [[HcdActionSheet alloc] initWithCancelStr:@"取消"
                                                     otherButtonTitles:@[@"6元/月(微信支付)",@"36元/年(微信支付)"]
@@ -224,7 +223,7 @@ static NSInteger lineCount = 3;
                 [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             
             
-            [NetWorkEntity getDepositInfoWithWithManayCount:100 * 6 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [NetWorkEntity getDepositInfoWithWithManayCount:payUnit * 6 success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 
                 [MBProgressHUD hideHUDForView:ws.view animated:YES];
                 
@@ -235,6 +234,7 @@ static NSInteger lineCount = 3;
                         if (resp.errCode == 0) {
                             [ws showTotasViewWithMes:@"支付成功"];
                             [[FMConfigManager sharedInstance] setPay:YES];
+                            [self refreshRighButton];
                             //[MobClick event:@"paySucess" attributes:@{ @"type":@"month"} counter:6];
                         }else{
                             [ws showTotasViewWithMes:@"支付失败"];
@@ -267,7 +267,7 @@ static NSInteger lineCount = 3;
                 [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             
             
-            [NetWorkEntity getDepositInfoWithWithManayCount:100 * 36 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [NetWorkEntity getDepositInfoWithWithManayCount:payUnit * 36 success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 
                 [MBProgressHUD hideHUDForView:ws.view animated:YES];
                 
@@ -278,10 +278,10 @@ static NSInteger lineCount = 3;
                         if (resp.errCode == 0) {
                             [ws showTotasViewWithMes:@"支付成功"];
                             [[FMConfigManager sharedInstance] setPay:YES];
+                            [self refreshRighButton];
                             //[MobClick event:@"paySucess" attributes:@{ @"type":@"month"} counter:36];
                         }else{
                             [ws showTotasViewWithMes:@"支付失败"];
-                            
                         }
                     }];
                     

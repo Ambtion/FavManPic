@@ -33,9 +33,7 @@
     
     
     self.isUseFavMan = [self getFavStatuFromNet];
-    
-    self.isUseFavMan = NO;
-    
+        
     self.navController = [[BMJWNagationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
@@ -101,5 +99,22 @@
     
 }
 
+
+#pragma mark AppDelegate FOR SSO
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([[HRWeCatManager shareInstance] isWeixinssoReturn:url]) {
+        return [[HRWeCatManager shareInstance] handdleOpneUrl:url];
+    }
+    return YES;
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if ([[HRWeCatManager shareInstance] isWeixinssoReturn:url]) {
+        return [[HRWeCatManager shareInstance] handdleOpneUrl:url];
+    }
+    
+    return YES;
+}
 
 @end
