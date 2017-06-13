@@ -151,7 +151,8 @@
         if ([[responseObject objectForKey:@"result"] isEqualToString:@"ok"] && [[[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"] count]) {
             
             NSArray * sourceList = [[responseObject objectForKey:@"data"] objectForKey:@"wallpaper"];
-         
+            sourceList =  [self fixTempData:sourceList];
+            
             for (NSInteger i = 0; i < self.dataSource.count; i++) {
                 FMGroupModel * model = self.dataSource[i];
                 NSDictionary * info = sourceList[i % sourceList.count];
@@ -167,6 +168,19 @@
         
     } failure:failure];
     
+}
+
+- (NSArray *)fixTempData:(NSArray *)array
+{
+    NSMutableArray * mArray = [NSMutableArray arrayWithCapacity:0];
+    for (NSDictionary * dic in array) {
+        NSString * iconId = [dic objectForKey:@"id"];
+        if ([iconId isEqualToString:@"121"]) {
+            continue;
+        }
+        [mArray addObject:dic];
+    }
+    return [mArray copy];
 }
 
 - (NSArray *)analysisPoiListModelFromArray:(NSArray *)array
